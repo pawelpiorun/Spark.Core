@@ -100,10 +100,10 @@ namespace Spark.Core.Client.Repository
             return paginatedResponse;
         }
 
-        public async Task<PaginatedResponse<List<T>>> GetFilteredPaginatedEntriesAsync(
-            FilterOperationDTO filter)
+        public async Task<PaginatedResponse<List<T>>> GetFilteredPaginatedEntriesAsync<TFilter>(
+            EntityFilterDTO<TFilter> filter)
         {
-            var responseHttp = await httpService.Post<FilterOperationDTO, List<T>>(
+            var responseHttp = await httpService.Post<EntityFilterDTO<TFilter>, List<T>>(
                 $"{Url}/filter", filter);
 
             var totalPagesHeader = responseHttp.ResponseMessage.Headers.GetValues("totalPages").FirstOrDefault();

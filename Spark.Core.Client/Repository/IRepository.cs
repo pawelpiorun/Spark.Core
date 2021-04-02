@@ -14,7 +14,7 @@ namespace Spark.Core.Client.Repository
         Task<List<T>> GetEntriesAsync();
         Task<List<T>> GetEntriesByAsync(string propertyName, string value);
         Task<PaginatedResponse<List<T>>> GetPaginatedEntriesAsync(PaginationDTO pagination);
-        Task<PaginatedResponse<List<T>>> GetFilteredPaginatedEntriesAsync(FilterOperationDTO filter);
+        Task<PaginatedResponse<List<T>>> GetFilteredPaginatedEntriesAsync<TFilter>(EntityFilterDTO<TFilter> filter);
         Task UpdateEntryAsync(T entry);
     }
 
