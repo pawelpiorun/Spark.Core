@@ -1,10 +1,8 @@
-﻿using Calculo.Shared.DTOs;
-using System;
+﻿using Spark.Core.Shared.DTOs;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace Spark.Core.Interfaces
+namespace Spark.Core.Client.Repository
 {
     public interface IRepository
     {

@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Spark.Core.Services
+namespace Spark.Core.Client.Services
 {
     public class HttpResponseWrapper<T>
     {

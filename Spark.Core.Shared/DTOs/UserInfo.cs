@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Spark.Core.DTOs
+namespace Spark.Core.Shared.DTOs
 {
     public class UserInfo
     {

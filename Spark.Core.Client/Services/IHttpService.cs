@@ -1,7 +1,6 @@
-﻿using Calculo.Client.Helpers;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Calculo.Client.Interfaces
+namespace Spark.Core.Client.Services
 {
     public interface IHttpService
     {

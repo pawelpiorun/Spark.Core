@@ -1,12 +1,10 @@
-﻿using Calculo.Client.Helpers;
-using Calculo.Client.Interfaces;
-using Calculo.Shared.Extensions;
+﻿using Spark.Core.Shared.Extensions;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Spark.Core.Services
+namespace Spark.Core.Client.Services
 {
     public class HttpService : IHttpService
     {
