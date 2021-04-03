@@ -7,3 +7,6 @@
 /Spark.Core.Server/bin/Debug/net5.0
 /Spark.Core.Server/obj
 /.vs/Spark.Core/v16
+/.vs/Spark.Core/config
+/Spark.Core.Blazor.Demo/bin/Debug/net5.0
+/Spark.Core.Blazor.Demo/obj

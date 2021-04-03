@@ -1,0 +1,45 @@
+﻿@typeparam TItem
+
+@if (Items is null)
+{
+    @if (NullTemplate is null)
+    {
+
+        <text> Loading... </text>
+    }
+    else
+    {
+        @NullTemplate
+    }
+}
+else if (Items.Count == 0)
+{
+    @if (EmptyTemplate is null)
+    {
+
+        <text> No items to show. </text>
+    }
+    else
+    {
+        @EmptyTemplate
+    }
+}
+else if (Template is null)
+{
+    @foreach (var element in Items)
+    {
+        @ItemTemplate(element)
+    }
+}
+else
+{
+    @Template
+}
+
+@code {
+    [Parameter] public RenderFragment NullTemplate { get; set; }
+    [Parameter] public RenderFragment EmptyTemplate { get; set; }
+    [Parameter] public RenderFragment<TItem> ItemTemplate { get; set; }
+    [Parameter] public RenderFragment Template { get; set; }
+    [Parameter] public List<TItem> Items { get; set; }
+}

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.Core.Client", "Spark.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.Core.Shared", "Spark.Core.Shared\Spark.Core.Shared.csproj", "{B829B235-2043-441E-82CF-2656F382DB57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.Core.Blazor.Demo", "Spark.Core.Blazor.Demo\Spark.Core.Blazor.Demo.csproj", "{2A7F99BA-6BCB-4AC6-9704-F0986306B9AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B829B235-2043-441E-82CF-2656F382DB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B829B235-2043-441E-82CF-2656F382DB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B829B235-2043-441E-82CF-2656F382DB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7F99BA-6BCB-4AC6-9704-F0986306B9AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7F99BA-6BCB-4AC6-9704-F0986306B9AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7F99BA-6BCB-4AC6-9704-F0986306B9AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7F99BA-6BCB-4AC6-9704-F0986306B9AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
