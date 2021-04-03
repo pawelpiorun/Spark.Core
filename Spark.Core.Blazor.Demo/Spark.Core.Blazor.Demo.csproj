@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spark.Core.Client\Spark.Core.Client.csproj" />
+    <ProjectReference Include="..\Spark.Core.Server\Spark.Core.Server.csproj" />
+    <ProjectReference Include="..\Spark.Core.Shared\Spark.Core.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
