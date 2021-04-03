@@ -10,6 +10,7 @@ namespace Spark.Core.Shared.DTOs
     {
         public int Rating { get; set; }
         public double AverageRating { get; set; }
+        public bool IsRated { get; set; }
         public TRated RatedEntity { get; set; }
     }
 }

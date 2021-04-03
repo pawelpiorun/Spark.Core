@@ -1,4 +1,6 @@
-﻿@for (int i = 1; i <= MaximumRating; i++)
+﻿@inject IDialogService dialogs 
+
+@for (int i = 1; i <= MaximumRating; i++)
 {
     var starNumber = i;
     <span @onclick="@(() => OnStarClicked(starNumber))"
@@ -13,10 +15,18 @@
     [Parameter] public int MaximumRating { get; set; }
     [Parameter] public int SelectedRating { get; set; }
     [Parameter] public EventCallback<int> OnVote { get; set; }
+    [CascadingParameter] public Task<AuthenticationState> AuthState { get; set; }
 
     bool voted = false;
     private async Task OnStarClicked(int starNumber)
     {
+        var state = await AuthState;
+        if (!state.User.Identity.IsAuthenticated)
+        {
+            await dialogs.ShowError("Please register in order to vote!");
+            return;
+        }
+
         SelectedRating = starNumber;
         voted = true;
         await OnVote.InvokeAsync(SelectedRating);

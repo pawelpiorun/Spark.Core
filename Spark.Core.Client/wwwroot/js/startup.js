@@ -22,9 +22,22 @@ if (!document.getElementById(cssId2)) {
     link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
     link.media = 'all';
     head.appendChild(link);
+}
 
+addSparkScripts();
+addSwal();
+
+function addSparkScripts() {
+    addScript("_content/Spark.Core.Client/js/utilities.js");
+}
+
+function addSwal() {
+    addScript("https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js");
+}
+
+function addScript(src) {
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "_content/Spark.Core.Client/js/utilities.js";
+    s.src = src;
     head.append(s);
 }

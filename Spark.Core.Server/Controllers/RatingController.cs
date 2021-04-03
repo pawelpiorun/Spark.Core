@@ -32,7 +32,7 @@ namespace Spark.Core.Server.Controllers
 
             var currentRating = await context.Set<Rating<T>>()
                 .FirstOrDefaultAsync(r => r.RatedEntityID == rating.RatedEntityID
-                && r.UserID == rating.UserID);
+                && r.UserID == userId);
 
             if (currentRating is null)
             {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Spark.Core.Client.Auth;
+using Spark.Core.Client.Dialogs;
 using Spark.Core.Client.Services;
 
 namespace Spark.Core.Client.Extensions
@@ -12,6 +13,7 @@ namespace Spark.Core.Client.Extensions
         {
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<ILocalStorageService, LocalStorageService>();
+            services.AddScoped<IDialogService, DialogService>();
 
             services.AddAuthorizationCore();
 
