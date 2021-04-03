@@ -24,4 +24,9 @@ namespace Spark.Core.Client.Repository
         Task<T> GetEntryAsync(TID id);
         Task RemoveEntryAsync(TID id);
     }
+
+    public interface IRepositoryWithRatings<T, TID> : IRepository<T, TID>
+    {
+        Task<RatedEntityDTO<T>> GetRatedEntryAsync(TID id);
+    }
 }
