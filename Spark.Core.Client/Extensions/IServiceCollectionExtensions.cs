@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Spark.Core.Client.Auth;
 using Spark.Core.Client.Dialogs;
+using Spark.Core.Client.Repository;
 using Spark.Core.Client.Services;
 
 namespace Spark.Core.Client.Extensions
@@ -14,6 +15,10 @@ namespace Spark.Core.Client.Extensions
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<ILocalStorageService, LocalStorageService>();
             services.AddScoped<IDialogService, DialogService>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IAccountsRepository, AccountsRepository>();
+
+            services.AddScoped<TokenRenewer>();
 
             services.AddAuthorizationCore();
 
@@ -24,6 +29,10 @@ namespace Spark.Core.Client.Extensions
 
             services.AddScoped<ILoginService, JwtAuthenticationStateProvider>(
                 provider => provider.GetRequiredService<JwtAuthenticationStateProvider>());
+
+
+            var renewer = services.BuildServiceProvider().GetRequiredService<TokenRenewer>();
+            renewer.Initialize();
         }
     }
 }

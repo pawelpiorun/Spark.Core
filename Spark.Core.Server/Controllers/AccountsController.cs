@@ -10,6 +10,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Calculo.Server.Controllers
 {
@@ -17,6 +19,7 @@ namespace Calculo.Server.Controllers
     [Route("api/[controller]")]
     public class AccountsController : ControllerBase
     {
+
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly IConfiguration configuration;
@@ -38,7 +41,7 @@ namespace Calculo.Server.Controllers
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return BuildToken(model);
+                return await BuildToken(model);
             }
             else
             {
@@ -46,7 +49,19 @@ namespace Calculo.Server.Controllers
             }
         }
 
-        private UserToken BuildToken(UserInfo userInfo)
+        [HttpGet("renewtoken")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<UserToken>> Renew()
+        {
+            var userInfo = new UserInfo()
+            {
+                Email = HttpContext.User.Identity.Name
+            };
+
+            return await BuildToken(userInfo);
+        }
+
+        private async Task<UserToken> BuildToken(UserInfo userInfo)
         {
             var claims = new List<Claim>()
             {
@@ -55,10 +70,16 @@ namespace Calculo.Server.Controllers
                 new Claim("value", "whatever")
             };
 
+            var identityUser = await userManager.FindByEmailAsync(userInfo.Email);
+            var claimsDB = await userManager.GetClaimsAsync(identityUser);
+
+            claims.AddRange(claimsDB);
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var expiration = DateTime.UtcNow.AddDays(30);
+            var expiration = DateTime.UtcNow.Add(UserTokenDefaults.ExpirationTime);
+
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: null,
                 audience: null,
@@ -86,7 +107,7 @@ namespace Calculo.Server.Controllers
 
             if (result.Succeeded)
             {
-                return BuildToken(userInfo);
+                return await BuildToken(userInfo);
             }
             else
             {

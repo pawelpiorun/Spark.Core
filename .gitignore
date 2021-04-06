@@ -10,3 +10,4 @@
 /.vs/Spark.Core/config
 /Spark.Core.Blazor.Demo/bin/Debug/net5.0
 /Spark.Core.Blazor.Demo/obj
+/.vs/Spark.Core/DesignTimeBuild

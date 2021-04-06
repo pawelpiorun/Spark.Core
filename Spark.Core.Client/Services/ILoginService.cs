@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using Spark.Core.Shared.DTOs;
+using System.Threading.Tasks;
 
 namespace Spark.Core.Client.Services
 {
     public interface ILoginService
     {
-        Task Login(string token);
+        Task Login(UserToken token);
         Task Logout();
+        Task TryRenewToken();
     }
 }
